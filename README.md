@@ -1,16 +1,15 @@
-# note_app_flutter
+## About Note App Flutter
 
-A new Flutter project.
+Note App Flutter is Mobile App designed by me using Flutter GetX for fulfilling the requirements of applying a job at PT Tiga Serangkai Pustaka Mandiri.
 
-## Getting Started
+App version:
+1. GetX: 1.6.0
+2. Flutter: 3.3.6
+3. Dart: 2.18.2
+4. Java: 17.0.4
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+How to install:
+1. Clone the repository
+2. Run flutter pub get
+3. Connect to suitable api in AppConst.baseApi
+4. Enjoy the app
