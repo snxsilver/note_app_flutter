@@ -130,7 +130,7 @@ class NoteEditController extends GetxController {
   }
 
   void getData({required uuid}) async {
-    print("getData");
+    // print("getData");
     final Map<String, String> headers = {
       'Authorization': 'Bearer ${await _token}'
     };
@@ -151,7 +151,7 @@ class NoteEditController extends GetxController {
       selectedCategory.value = data.category;
       update();
     } else {
-      print('Error : status code ' + response.statusCode.toString());
+      // print('Error : status code ' + response.statusCode.toString());
       // AppSnackbar.show(
       //   context,
       //   title: 'Error : status code ' + response.statusCode.toString(),

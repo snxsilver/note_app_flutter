@@ -9,6 +9,7 @@ import 'package:http/http.dart' as myHttp;
 import '../../../routes/app_pages.dart';
 import '../../../widget/app/theme/app_colors.dart';
 import '../../../widget/atom/app_snackbar.dart';
+import 'package:note_app_flutter/app/widget/app/const/app_const.dart';
 
 class LoginController extends GetxController {
   //TODO: Implement LoginController
@@ -20,7 +21,7 @@ class LoginController extends GetxController {
   checkToken(token, name) async {
     String tokenStr = await token;
     String nameStr = await name;
-    print("token: $tokenStr, username: $nameStr");
+    // print("token: $tokenStr, username: $nameStr");
     if (tokenStr != "" && nameStr != "") {
       await Future.delayed(const Duration(seconds: 1));
       Get.offAllNamed(Routes.HOME);
@@ -28,24 +29,24 @@ class LoginController extends GetxController {
   }
 
   Future login(context, {username, password}) async {
-    print("username: $username, password: $password");
+    // print("username: $username, password: $password");
     LoginSetting? loginSetting;
     Map<String, String> body = {"username": username, "password": password};
     // print("check1.5");
     var response = await myHttp.post(
-      Uri.parse('http://10.0.2.2:8000/api/auth/login'),
+      Uri.parse('${AppConst.baseApi}api/auth/login'),
       body: body,
     );
-    print("check2");
+    // print("check2");
     if (response.statusCode == 200) {
-      print(response.body);
+      // print(response.body);
       loginSetting = LoginSetting.fromJson(json.decode(response.body));
       saveUser(
         context,
         token: loginSetting.access_token,
         username: loginSetting.data.username,
       );
-      print(loginSetting);
+      // print(loginSetting);
     } else if (response.statusCode == 401) {
       // ignore: use_build_context_synchronously
       AppSnackbar.show(
@@ -55,7 +56,7 @@ class LoginController extends GetxController {
         showCloseButton: true,
       );
     } else {
-      print("check3");
+      // print("check3");
       // ignore: use_build_context_synchronously
       AppSnackbar.show(
         context,
@@ -82,7 +83,7 @@ class LoginController extends GetxController {
       pref.setString("token", token);
       Get.offAllNamed(Routes.HOME);
     } catch (err) {
-      print(err.toString());
+      // print(err.toString());
       AppSnackbar.show(
         context,
         title: err.toString(),

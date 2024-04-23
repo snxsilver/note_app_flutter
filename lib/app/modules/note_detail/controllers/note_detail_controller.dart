@@ -20,10 +20,6 @@ class NoteDetailController extends GetxController {
   late Note data;
 
   Future delete(context, {uuid}) async {
-    //     Map<String, String> body = {
-    //   "reminder": parsedDate.toString(),
-    // };
-
     final Map<String, String> headers = {
       'Authorization': 'Bearer ${await _token}'
     };
@@ -31,10 +27,9 @@ class NoteDetailController extends GetxController {
     var response = await myHttp.delete(
       Uri.parse('${AppConst.baseApi}note/$uuid'),
       headers: headers,
-      // body: body,
     );
 
-    print(response.statusCode);
+    // print(response.statusCode);
 
     if (response.statusCode == 200) {
       ActionSetting actionSetting =

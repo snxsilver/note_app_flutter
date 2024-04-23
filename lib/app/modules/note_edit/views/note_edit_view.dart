@@ -4,14 +4,14 @@ import 'package:get/get.dart';
 import 'package:note_app_flutter/app/widget/app/const/app_category.dart';
 import 'package:note_app_flutter/app/widget/atom/app_text_field.dart';
 
-import '../../../routes/app_pages.dart';
+// import '../../../routes/app_pages.dart';
 import '../../../widget/app/asset/app_icons.dart';
 import '../../../widget/app/theme/app_colors.dart';
 import '../../../widget/app/theme/app_sizes.dart';
 import '../../../widget/atom/app_appbar.dart';
 import '../../../widget/atom/app_category.dart';
 import '../../../widget/atom/app_icon_button_custom.dart';
-import '../../../widget/atom/app_label.dart';
+// import '../../../widget/atom/app_label.dart';
 import '../controllers/note_edit_controller.dart';
 
 class NoteEditView extends GetView<NoteEditController> {

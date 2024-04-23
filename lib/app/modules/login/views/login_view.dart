@@ -6,7 +6,7 @@ import 'package:note_app_flutter/app/widget/atom/app_button.dart';
 import 'package:note_app_flutter/app/widget/atom/app_logo.dart';
 import 'package:note_app_flutter/app/widget/atom/app_text_field.dart';
 
-import '../../../routes/app_pages.dart';
+// import '../../../routes/app_pages.dart';
 import '../controllers/login_controller.dart';
 
 class LoginView extends GetView<LoginController> {

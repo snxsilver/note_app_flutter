@@ -1,12 +1,12 @@
 import 'dart:convert';
 
-import 'package:flutter/material.dart';
+// import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:intl/intl.dart';
+// import 'package:intl/intl.dart';
 import 'package:note_app_flutter/app/data/models/action_setting.dart';
 import 'package:note_app_flutter/app/data/models/note_setting.dart';
 import 'package:note_app_flutter/app/routes/app_pages.dart';
-import 'package:note_app_flutter/app/widget/app/asset/app_icons.dart';
+// import 'package:note_app_flutter/app/widget/app/asset/app_icons.dart';
 import 'package:note_app_flutter/app/widget/app/const/app_const.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:http/http.dart' as myHttp;
@@ -56,7 +56,7 @@ class HomeController extends GetxController {
           NotesSetting.fromJson(json.decode(response.body));
       data.value = notesSetting.data;
     } else {
-      print('Error : status code' + response.statusCode.toString());
+      // print('Error : status code' + response.statusCode.toString());
       AppSnackbar.show(
         context,
         title: 'Error : status code' + response.statusCode.toString(),
@@ -84,7 +84,7 @@ class HomeController extends GetxController {
           showCloseButton: true,
         );
       } else {
-        print('Error : status code' + response.statusCode.toString());
+        // print('Error : status code' + response.statusCode.toString());
         AppSnackbar.show(
           context,
           title: 'Error : status code' + response.statusCode.toString(),
@@ -93,7 +93,7 @@ class HomeController extends GetxController {
         );
       }
     } catch (err) {
-      print(err.toString());
+      // print(err.toString());
       AppSnackbar.show(
         context,
         title: err.toString(),
