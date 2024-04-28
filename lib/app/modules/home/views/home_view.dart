@@ -90,37 +90,41 @@ class HomeView extends GetView<HomeController> {
         const SizedBox(
           height: AppSizes.padding,
         ),
-        // controller.data ? SizedBox.shrink() : SizedBox.shrink()
-        // controller.data.length == 0
-        //     ? SizedBox.shrink()
-        //     :
         Obx(
-          () => controller.data.isEmpty
-              ? SizedBox.shrink()
-              : Column(
-                  children: [
-                    ...List.generate(
-                      controller.data.length,
-                      (i) {
-                        return Padding(
-                          padding: const EdgeInsets.symmetric(
-                              vertical: AppSizes.padding / 2),
-                          child: GestureDetector(
-                            onTap: () => Get.toNamed(Routes.NOTE_DETAIL,
-                                arguments: [controller.data[i]]),
-                            child: AppCard(
-                              title: controller.data[i].title,
-                              subtitle: AppHelper.formatDate(
-                                  value: controller.data[i].reminder),
-                              icon: AppHelper.formatIcon(
-                                  icon: controller.data[i].category),
-                            ),
-                          ),
-                        );
-                      },
+          () => controller.isLoading.value
+              ? Center(
+                  child: SizedBox(
+                    child: CircularProgressIndicator(),
+                    width: 20,
+                    height: 20,
+                  ),
+                )
+              : controller.data.isEmpty
+                  ? SizedBox.shrink()
+                  : Column(
+                      children: [
+                        ...List.generate(
+                          controller.data.length,
+                          (i) {
+                            return Padding(
+                              padding: const EdgeInsets.symmetric(
+                                  vertical: AppSizes.padding / 2),
+                              child: GestureDetector(
+                                onTap: () => Get.toNamed(Routes.NOTE_DETAIL,
+                                    arguments: [controller.data[i]]),
+                                child: AppCard(
+                                  title: controller.data[i].title,
+                                  subtitle: AppHelper.formatDate(
+                                      value: controller.data[i].reminder),
+                                  icon: AppHelper.formatIcon(
+                                      icon: controller.data[i].category),
+                                ),
+                              ),
+                            );
+                          },
+                        ),
+                      ],
                     ),
-                  ],
-                ),
         )
       ],
     );

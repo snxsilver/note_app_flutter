@@ -33,7 +33,11 @@ class NoteEditController extends GetxController {
     selectedCategory.value = val;
   }
 
+  var isLoading = false.obs;
+
   Future upload(context, {category, title, date}) async {
+    isLoading.value = true;
+    update();
     // print("category: $category, title: $title, date: $date");
 
     DateFormat dateFormat = DateFormat("EEEE, d MMMM yyyy", "id_ID");
@@ -79,9 +83,13 @@ class NoteEditController extends GetxController {
         showCloseButton: true,
       );
     }
+    isLoading.value = false;
+    update();
   }
 
   Future patch(context, {uuid, category, title, date}) async {
+    isLoading.value = true;
+    update();
     // print("category: $category, title: $title, date: $date");
 
     DateFormat dateFormat = DateFormat("EEEE, d MMMM yyyy", "id_ID");
@@ -127,9 +135,13 @@ class NoteEditController extends GetxController {
         showCloseButton: true,
       );
     }
+    isLoading.value = false;
+    update();
   }
 
   void getData({required uuid}) async {
+    isLoading.value = true;
+    update();
     // print("getData");
     final Map<String, String> headers = {
       'Authorization': 'Bearer ${await _token}'
@@ -159,6 +171,8 @@ class NoteEditController extends GetxController {
       //   showCloseButton: true,
       // );
     }
+    isLoading.value = false;
+    update();
   }
 
   final count = 0.obs;

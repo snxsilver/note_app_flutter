@@ -37,8 +37,6 @@ class Data {
     required this.email,
     required this.createdAt,
     required this.updatedAt,
-    // required this.token,
-    // required this.tokenType,
   });
 
   String uuid;
@@ -46,8 +44,6 @@ class Data {
   String email;
   DateTime createdAt;
   DateTime updatedAt;
-  // String token;
-  // String tokenType;
 
   factory Data.fromJson(Map<String, dynamic> json) => Data(
         uuid: json["uuid"],
@@ -65,7 +61,5 @@ class Data {
         "email": email,
         "created_at": createdAt.toIso8601String(),
         "updated_at": updatedAt.toIso8601String(),
-        // "token": token,
-        // "token_type": tokenType,
       };
 }

@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import 'package:note_app_flutter/app/widget/app/theme/app_colors.dart';
 import 'package:note_app_flutter/app/widget/app/theme/app_sizes.dart';
 import 'package:note_app_flutter/app/widget/atom/app_button.dart';
 import 'package:note_app_flutter/app/widget/atom/app_logo.dart';
 import 'package:note_app_flutter/app/widget/atom/app_text_field.dart';
 
 // import '../../../routes/app_pages.dart';
+import '../../../widget/app/theme/app_text_style.dart';
 import '../controllers/login_controller.dart';
 
 class LoginView extends GetView<LoginController> {
@@ -68,7 +70,32 @@ class LoginView extends GetView<LoginController> {
               // controller.showSnack(context);
               // Get.toNamed(Routes.HOME);
             },
-            text: "Login",
+            // text: "Login",
+            textWidget: Obx(
+              () => controller.isLoading.value
+                  ? Center(
+                      child: SizedBox(
+                        child: CircularProgressIndicator(),
+                        width: 20,
+                        height: 20,
+                      ),
+                    )
+                  : Flexible(
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: AppSizes.padding / 2),
+                        child: Text(
+                          "login",
+                          overflow: TextOverflow.ellipsis,
+                          style: AppTextStyle.custom(
+                            size: 16,
+                            color: AppColors.white,
+                            fontWeight: AppFontWeight.bold,
+                          ),
+                        ),
+                      ),
+                    ),
+            ),
           )
         ],
       ),

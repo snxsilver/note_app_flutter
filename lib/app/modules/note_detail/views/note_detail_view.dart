@@ -19,38 +19,50 @@ class NoteDetailView extends GetView<NoteDetailController> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        appBar: appBar(context),
-        body: Padding(
-          padding: const EdgeInsets.all(AppSizes.padding * 1.5),
-          child: Column(
-            children: [
-              AppLabel(
-                text: controller.data.title,
-                width: double.infinity,
-              ),
-              const SizedBox(
-                height: AppSizes.padding,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  AppCategory(
-                    icon: AppHelper.formatIcon(icon: controller.data.category),
-                    text: AppHelper.formatIconText(
-                        icon: controller.data.category),
-                  ),
-                  AppLabel(
-                    text: AppHelper.formatDate(value: controller.data.reminder),
-                    padding: const EdgeInsets.symmetric(
-                      vertical: AppSizes.padding / 1.5,
-                      horizontal: AppSizes.padding,
+          appBar: appBar(context),
+          body: Obx(
+            () => controller.isLoading.value
+                ? Center(
+                    child: SizedBox(
+                      child: CircularProgressIndicator(),
+                      width: 20,
+                      height: 20,
                     ),
-                  ),
-                ],
+                  )
+                : body(),
+          )),
+    );
+  }
+
+  Widget body() {
+    return Padding(
+      padding: const EdgeInsets.all(AppSizes.padding * 1.5),
+      child: Column(
+        children: [
+          AppLabel(
+            text: controller.data.title,
+            width: double.infinity,
+          ),
+          const SizedBox(
+            height: AppSizes.padding,
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              AppCategory(
+                icon: AppHelper.formatIcon(icon: controller.data.category),
+                text: AppHelper.formatIconText(icon: controller.data.category),
+              ),
+              AppLabel(
+                text: AppHelper.formatDate(value: controller.data.reminder),
+                padding: const EdgeInsets.symmetric(
+                  vertical: AppSizes.padding / 1.5,
+                  horizontal: AppSizes.padding,
+                ),
               ),
             ],
           ),
-        ),
+        ],
       ),
     );
   }

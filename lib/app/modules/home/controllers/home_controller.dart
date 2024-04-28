@@ -19,6 +19,8 @@ class HomeController extends GetxController {
   final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
   late Future<String> _username, _token;
 
+  var isLoading = false.obs;
+
   // NotesSetting? notesSetting;
   // RxList<Note> data = <Note>[].obs;
   RxList<Note> data = RxList<Note>([]);
@@ -41,6 +43,8 @@ class HomeController extends GetxController {
   }
 
   void getData(context) async {
+    isLoading.value = true;
+    update();
     // String token = await _token;
     // print("token: $token");
     final Map<String, String> headers = {
@@ -65,6 +69,8 @@ class HomeController extends GetxController {
       );
     }
     // print(riwayat);
+    isLoading.value = false;
+    update();
   }
 
   void logout(context) async {

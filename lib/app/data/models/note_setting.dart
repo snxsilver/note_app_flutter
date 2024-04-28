@@ -76,7 +76,5 @@ class Note {
         "user_id": user_id,
         "created_at": createdAt.toIso8601String(),
         "updated_at": updatedAt.toIso8601String(),
-        // "token": token,
-        // "token_type": tokenType,
       };
 }

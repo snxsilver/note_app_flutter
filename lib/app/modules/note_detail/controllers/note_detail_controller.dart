@@ -19,7 +19,11 @@ class NoteDetailController extends GetxController {
   var passedData = Get.arguments;
   late Note data;
 
+  var isLoading = false.obs;
+
   Future delete(context, {uuid}) async {
+    isLoading.value = true;
+    update();
     final Map<String, String> headers = {
       'Authorization': 'Bearer ${await _token}'
     };
@@ -49,6 +53,8 @@ class NoteDetailController extends GetxController {
         showCloseButton: true,
       );
     }
+    isLoading.value = false;
+    update();
   }
 
   final count = 0.obs;

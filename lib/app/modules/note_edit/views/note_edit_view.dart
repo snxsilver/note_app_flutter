@@ -19,9 +19,18 @@ class NoteEditView extends GetView<NoteEditController> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        appBar: appBar(context),
-        body: body(),
-      ),
+          appBar: appBar(context),
+          body: Obx(
+            () => controller.isLoading.value
+                ? Center(
+                    child: SizedBox(
+                      child: CircularProgressIndicator(),
+                      width: 20,
+                      height: 20,
+                    ),
+                  )
+                : body(),
+          )),
     );
   }
 
